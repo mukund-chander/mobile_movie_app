@@ -14,9 +14,11 @@ import { useRouter } from "expo-router";
 import useFetch from "@/services/useFetch";
 import { fetchMovies } from "@/services/api";
 import MovieCard from "@/components/MovieCard";
+import { useState } from "react";
 
 export default function Index() {
   const router = useRouter();
+  const [searchValue, setSearchValue] = useState(""); // Add this line
 
   const {
     data: movies,
@@ -47,6 +49,8 @@ export default function Index() {
             <SearchBar
               onPress={() => router.push("/search")}
               placeholder="Search for a movie"
+              value={searchValue}
+              onChangeText={setSearchValue}
             />
 
             <>
